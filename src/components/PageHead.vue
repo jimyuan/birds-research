@@ -7,7 +7,6 @@
       <svg-icon svg-name="icon-home"></svg-icon>
     </span>
   </h1>
-  <el-divider></el-divider>
 </template>
 <script setup>
 import { useRouter, useRoute } from 'vue-router'
@@ -29,21 +28,23 @@ function goHome () {
 </script>
 <style scoped>
 h1 {
-  height: 45px;
-  font-size: 2.4rem;
+  line-height: var(--head-height);
+  height: var(--head-height);
+  font-size: 2.2rem;
   position: relative;
   color: var(--el-color-info);
+  border-bottom: 1px var(--el-border-color) var(--el-border-style);
 }
 
 .site-title {
-  transition: left 0.5s;
+  transition: left 0.5s, transform 0.5s;
   position: absolute;
   left: 0.5em;
   transform: translateX(0);
 }
 
 .go-home {
-  transition: scale 0.5s;
+  transition: transform 0.5s;
   position: absolute;
   right: 0.5em;
   transform: scale(1);

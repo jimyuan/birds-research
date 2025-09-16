@@ -1,5 +1,3 @@
-# Vue 3 + Vite
+# 2024 上海野鸟调查分析
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+本网站从中国最权威的鸟类数据观察记录网站 [中国观鸟记录中心](https://www.birdreport.cn/) 获取 2024 年度上海鸟类观察数据样本，从鸟种记录频次、多样性等方面，试图初步分析探讨一下上海一鸟类的现状。
