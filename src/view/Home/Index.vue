@@ -49,6 +49,26 @@
           作为主要组件样式，图表生成则采用了<strong>Echarts6</strong>。
         </el-text>
       </p>
+      <p>
+        <el-text type="info">本站点源码托管在 GitHub 上，地址为 <code
+            class="code">git@github.com:jimyuan/birds-research.git</code>，可直接利用该地址
+          clone 到本地运行，运行步骤如下：
+          <pre class="code">
+// 克隆项目到本地
+git clone git@github.com:jimyuan/birds-research.git
+
+// 安装依赖
+yarn install
+
+// 运行项目
+yarn dev</pre>
+        </el-text>
+      </p>
+      <p>
+        <el-text type="info">为方便浏览网站，在 GitHub
+          上开了一个浏览目录，访问网址为：<el-link
+            type="primary">https://jimyuan.github.io/birds-research/dist/</el-link></el-text>
+      </p>
     </div>
   </section>
 </template>
@@ -185,7 +205,7 @@ nav>section {
 
 .desc {
   padding: 20px;
-  border: 1px solid var(--el-color-warning);
+  border: 1px dashed var(--el-color-warning);
   background-color: var(--el-color-warning-light-9);
 }
 

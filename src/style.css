@@ -82,10 +82,16 @@ h1 {
   border-radius: 5px;
 }
 
-pre {
+pre.code,
+code.code {
   padding: 2em 1em;
   font-size: 14px;
+  line-height: 1.5;
   background-color: var(--el-color-info-light-9);
+}
+
+code.code {
+  padding: 0.5em 1em;
 }
 
 .latin-name {
