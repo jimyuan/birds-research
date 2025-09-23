@@ -5,7 +5,9 @@ import {
   TitleComponent,
   TooltipComponent,
   GridComponent,
-  LegendComponent
+  LegendComponent,
+  MarkLineComponent,
+  MarkPointComponent
 } from 'echarts/components'
 import { CanvasRenderer } from 'echarts/renderers'
 
@@ -18,7 +20,9 @@ echarts.use( [
   PieChart,
   CanvasRenderer,
   LabelLayout,
-  LegendComponent
+  LegendComponent,
+  MarkLineComponent,
+  MarkPointComponent
 ] )
 
 export default echarts

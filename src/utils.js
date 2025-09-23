@@ -7,4 +7,4 @@ export const decodeData = json => JSON.parse( BIRDREPORT_APIJS.decode( json[ 'da
  */
 export const formatNumber = num => {
   return num.toString().replace( /\B(?=(\d{3})+(?!\d))/g, "," );
-};
+}

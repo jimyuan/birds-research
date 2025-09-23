@@ -1,5 +1,6 @@
 <template>
   <section class="container">
+    <p> <i>*按鸟种观察记录数排名</i></p>
     <el-tabs v-model="activeName"
       @tab-change="getMonthlyData"
       stretch>
@@ -18,10 +19,18 @@
           <el-table-column type="index"
             class-name="index-no"
             label="№."
-            width="80"
-            :index="indexMethod" />
+            width="80" />
           <el-table-column prop="taxonname"
-            label="鸟种名" />
+            label="鸟种名">
+            <template #default="{ row }">
+              <span>{{ row.taxonname }}</span>
+              <router-link
+                :to="{ name: 'SpeciesDetail', params: { id: row.taxon_id } }">
+                <svg-icon svg-name="icon-bar"
+                  class-name="bar"></svg-icon>
+              </router-link>
+            </template>
+          </el-table-column>
           <el-table-column prop="latinname"
             label="拉丁名"
             class-name="latin-name" />
@@ -58,10 +67,8 @@ const getMonthlyData = async () => {
   const res = await fetch( url )
   const json = await res.json()
   tableData[ activeName.value ] = decodeData( json )
+  tableData[ activeName.value ].sort( ( a, b ) => b.recordcount - a.recordcount )
 }
-
-const indexMethod = idx => tableData[ activeName.value ].length - idx
-
 onMounted( async () => {
   getMonthlyData()
 } )

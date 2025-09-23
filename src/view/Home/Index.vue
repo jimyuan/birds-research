@@ -35,6 +35,21 @@
         </section>
       </Transition>
     </nav>
+    <div class="desc">
+      <h3>站点说明：</h3>
+      <p>
+        <el-text type="info">
+          本网站采用的技术栈架构如下：
+          <pre class="code">Vite+Yarn+Vue3+Vue-Router+Pinia</pre>
+          采用 <strong>Vite</strong> 和 <strong>Yarn</strong> 作为构建工具，使用
+          <strong>Vue3</strong>
+          框架进行开发，配合 <strong>Vue-Router</strong>
+          实现路由管理，使用 <strong>Pinia</strong>
+          进行状态管理。开发过程中，采用了几个第三方组件库， <strong>Element-plus</strong>
+          作为主要组件样式，图表生成则采用了<strong>Echarts6</strong>。
+        </el-text>
+      </p>
+    </div>
   </section>
 </template>
 
@@ -67,11 +82,12 @@ onMounted( async () => {
 
 <style>
 nav {
-  --nav-size: calc(var(--base-width) / 3);
+  --nav-size: calc(var(--base-width) / 2.5);
   transition: box-shadow 0.8s;
   width: var(--nav-size);
   height: var(--nav-size);
-  margin: 100px auto;
+  margin: 50px auto;
+  margin-bottom: 100px;
   border-radius: 15%;
   overflow: hidden;
   box-shadow:
@@ -165,5 +181,20 @@ nav>section {
   font-size: 1.5em;
   color: var(--el-color-info);
   background-color: var(--el-color-primary-light-8);
+}
+
+.desc {
+  padding: 20px;
+  border: 1px solid var(--el-color-warning);
+  background-color: var(--el-color-warning-light-9);
+}
+
+.desc h3 {
+  margin: 0;
+  color: var(--el-color-warning);
+}
+
+.desc pre {
+  border: 1px solid var(--el-color-info-light-7);
 }
 </style>

@@ -5,7 +5,7 @@
       <span class="count">22</span> 目 <span class="count">82</span> 科，共计
       <span class="count">{{ totalSpec }}</span>
       种，占全国鸟类种数的 <span class="count">35.2%</span>（2024 年底全国记录鸟种数量据统计为
-      1516）。其中列入国保一级 <span class="count">29</span>
+      {{ formatNumber(1516) }}）。其中列入国保一级 <span class="count">29</span>
       种，国保二级 <span class="count">93</span> 种；列入 <strong>IUCN</strong>
       濒危物种红色名录( Red
       List )中极危(CR)物种 <span class="count">7</span> 种，濒危(EN)物种 <span
@@ -20,7 +20,7 @@
       从观鸟中心的前端页面，我们可以获取到 2024
       年度上海地区的每月由鸟友提交而来的鸟种数据，打开浏览器控制台，可以从网络标签里截获客户端和服务器异步通讯传来的一组 JSON 数据，其格式如下：
     </p>
-    <pre class="code">
+    <pre>
   {
     "code": 0,
     "count": 416,
@@ -53,30 +53,62 @@
         }}</span>
       种鸟类，占上海历史鸟种数({{ totalSpec }})的 <span class="count">{{ specRate }}%</span>。
     </p>
+    <chart-page :option="barOption"></chart-page>
+    <p>
+      由上图可见，近几年在上海地区记录到的鸟种呈现了递增的趋势，说明了上海及其周边地区的环境水平在逐年的优化和改善。另一方面，日益增多的观鸟人口，尤其是青少年观鸟人口的增加，让许多鸟种得到有效的目击和记录。
+    </p>
   </section>
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, reactive } from 'vue'
 import { useStore } from '@/store'
+import { formatNumber } from '@/utils'
+import ChartPage from '@/components/ChartPage.vue'
 
 const store = useStore()
 
 const totalSpec = ref( 534 )
 
-// const taxon = computed( () => {
-//   const arr = Object.values( store.speciesList )
-//   const family = [], order = []
-//   for ( let item of arr ) {
-//     family.push( item[ 'familyName' ] )
-//     order.push( item[ 'orderName' ] )
-//   }
-//   return { order: [ ...new Set( order ) ], family: [ ...new Set( family ) ] }
-// } )
-
 const specRate = computed( () => {
   const tmp = Object.keys( store.speciesList ).length / totalSpec.value * 100
   return tmp.toFixed( 2 )
+} )
+
+const barOption = reactive( {
+  title: { text: '2020-2024 年鸟种数据一览' },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow'
+    }
+  },
+  xAxis: { type: 'category', data: [ 2020, 2021, 2022, 2023, 2024 ].reverse() },
+  yAxis: { type: 'value' },
+  series: [ {
+    name: '鸟种数',
+    type: 'bar',
+    data: [ Object.keys( store.speciesList ).length, 389, 360, 364, 315 ],
+  }, {
+    name: '所属科数',
+    type: 'bar',
+    stack: 'Ad',
+    data: [ store.taxonList.family.length, 67, 65, 65, 62 ],
+  }, {
+    name: '所属目数',
+    type: 'bar',
+    stack: 'Ad',
+    data: [ store.taxonList.order.length, 19, 19, 20, 19 ],
+  }, {
+    name: '鸟种走势',
+    type: 'line',
+    data: [ Object.keys( store.speciesList ).length, 389, 360, 364, 315 ],
+    markPoint: {
+      data: [
+        { type: 'max', name: '峰值' }
+      ]
+    }
+  } ]
 } )
 
 </script>
@@ -86,5 +118,6 @@ const specRate = computed( () => {
   margin-bottom: 1em;
   line-height: 2;
   text-indent: 2em;
+  text-align: justify;
 }
 </style>

@@ -32,7 +32,7 @@ h1 {
   height: var(--head-height);
   font-size: 2.2rem;
   position: relative;
-  color: var(--el-color-info);
+  color: var(--el-text-color-regular);
   border-bottom: 1px var(--el-border-color) var(--el-border-style);
 }
 
