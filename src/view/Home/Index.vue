@@ -66,8 +66,9 @@ yarn dev</pre>
       </p>
       <p>
         <el-text type="info">为方便浏览网站，在 GitHub
-          上开了一个浏览目录，访问网址为：<el-link
-            type="primary">https://jimyuan.github.io/birds-research/dist/</el-link></el-text>
+          上开了一个浏览目录，访问网址为：<el-link type="primary"
+            href="https://jimyuan.github.io/birds-research/dist/"
+            target="_blank">https://jimyuan.github.io/birds-research/dist/</el-link></el-text>
       </p>
     </div>
   </section>
